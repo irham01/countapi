@@ -52,6 +52,7 @@ app.get('/:namespace/:key', async (req, res) => {
 		res.json({name: namespace, key:key, value: catatan[namespace][key] })
 	} else {
 		if (value) {
+			if (isNaN(value)) return res.json({error: `value harus berupa angka`})
 			catatan[namespace][key] = value
 		} else if (hit && (hit === '-') ) {
 			catatan[namespace][key] += -1
