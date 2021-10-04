@@ -1,4 +1,4 @@
-yoururl = 'https://countapi.frmdev.repl.co'
+yoururl = 'https://countapi.frm.rf.gd'
 var express = require('express'),
     cors = require('cors'),
     secure = require('ssl-express-www');
