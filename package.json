@@ -1,0 +1,32 @@
+{
+  "name": "countapi",
+  "version": "1.1.1-uh",
+  "description": "git clone https://github.com/frmdeveloper/countapi",
+  "main": "countapi.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "dependencies": {
+	"axios": "latest",
+    "cors": "latest",
+    "express": "latest",
+    "nodemon": "latest",
+    "ssl-express-www": "latest"
+  },
+  "scripts": {
+    "start": "nodemon -x 'node countapi.js || touch countapi.js'"
+  },
+  "nodemonConfig": {
+    "ext": "js,html,sh"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/frmdeveloper/countapi.git"
+  },
+  "author": "Fauzan Rifki Maulana",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/frmdeveloper/countapi/issues"
+  },
+  "homepage": "https://github.com/frmdeveloper/countapi/readme"
+}
