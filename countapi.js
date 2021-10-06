@@ -65,6 +65,12 @@ app.get('/:namespace/:key', async (req, res) => {
 	console.log({name: namespace, key:key, value: catatan[namespace][key] })
 })
 
+app.get('/getdatabase/:namespace', async (req, res) => {
+	const { namespace } = req.params
+	if (!namespace) return res.json({error:'tidak ditemukan'})
+	res.json(catatan[namespace])
+})
+
 app.get('/restart', async (req, res) => {
 	fs.createReadStream('uh')
 	res.json('sudah')
