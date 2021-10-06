@@ -37,7 +37,7 @@ app.get('/', async (req, res) => {
 
 app.get('/:namespace/:key', async (req, res) => {
 	const { namespace, key } = req.params
-	const { hit, value } = req.query
+	const { amount, value } = req.query
 	if (!namespace || !key) return res.json({error: `Silahkan lihat cara menggunakan`})
 	if (namespace.length != namespace.match(/[-a-zA-Z0-9._]/gi).length) return res.json({error: 'Karakter tidak diizinkan'})
 	if (!(namespace in catatan)) {
@@ -54,7 +54,7 @@ app.get('/:namespace/:key', async (req, res) => {
 		if (value) {
 			if (isNaN(value)) return res.json({error: `value harus berupa angka`})
 			catatan[namespace][key] = value
-		} else if (hit && (hit === '-') ) {
+		} else if (amount && (amount === '-') ) {
 			catatan[namespace][key] += -1
 		} else {
 			catatan[namespace][key]++
