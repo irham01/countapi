@@ -35,6 +35,12 @@ app.get('/', async (req, res) => {
 	res.redirect("https://github.com/frmdeveloper/countapi")
 })
 
+app.get('/getdatabase/:namespace', async (req, res) => {
+	const { namespace } = req.params
+	if (!namespace) return res.json({error:'tidak ditemukan'})
+	res.json(catatan[namespace])
+})
+
 app.get('/:namespace/:key', async (req, res) => {
 	const { namespace, key } = req.params
 	const { amount, value } = req.query
@@ -63,12 +69,6 @@ app.get('/:namespace/:key', async (req, res) => {
 		res.json({name: namespace, key:key, value: catatan[namespace][key] })
 	}
 	console.log({name: namespace, key:key, value: catatan[namespace][key] })
-})
-
-app.get('/getdatabase/:namespace', async (req, res) => {
-	const { namespace } = req.params
-	if (!namespace) return res.json({error:'tidak ditemukan'})
-	res.json(catatan[namespace])
 })
 
 app.get('/restart', async (req, res) => {
