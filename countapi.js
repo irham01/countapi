@@ -41,35 +41,35 @@ app.get('/getdatabase/:namespace', async (req, res) => {
 	res.json(catatan[namespace])
 })
 
-app.get('/:namespace/:key', async (req, res) => {
-	const { namespace, key } = req.params
+app.get('/:namespace/:desk', async (req, res) => {
+	const { namespace, desk } = req.params
 	const { amount, value } = req.query
 	const getamount = Number(amount)
-	if (!namespace || !key) return res.json({error: `Silahkan lihat cara menggunakan`})
+	if (!namespace || !desk) return res.json({error: `Silahkan lihat cara menggunakan`})
 	if (namespace.length != namespace.match(/[-a-zA-Z0-9._]/gi).length) return res.json({error: 'Karakter tidak diizinkan'})
 	if (!(namespace in catatan)) {
 		catatan[namespace] = {
-		  [key]: value?value: 1
+		  [desk]: value?value: 1
 		}
 		await fs.writeFileSync('./database.json', JSON.stringify(catatan, null, 2))
-		res.json({name: namespace, key:key, value: catatan[namespace][key] })
-	} else if ((namespace in catatan) && !(key in catatan[namespace])) {
-		catatan[namespace][key] = value?value: 1
+		res.json({name: namespace, desk:desk, value: catatan[namespace][desk] })
+	} else if ((namespace in catatan) && !(desk in catatan[namespace])) {
+		catatan[namespace][desk] = value?value: 1
 		await fs.writeFileSync('./database.json', JSON.stringify(catatan, null, 2))
-		res.json({name: namespace, key:key, value: catatan[namespace][key] })
+		res.json({name: namespace, desk:desk, value: catatan[namespace][desk] })
 	} else {
 		if (value) {
 			if (isNaN(value)) return res.json({error: `value harus berupa angka`})
-			catatan[namespace][key] = value
+			catatan[namespace][desk] = value
 		} else if (getamount) {
-			catatan[namespace][key] += getamount
+			catatan[namespace][desk] += getamount
 		} else {
-			catatan[namespace][key]++
+			catatan[namespace][desk]++
 		}
 		await fs.writeFileSync('./database.json', JSON.stringify(catatan, null, 2))
-		res.json({name: namespace, key:key, value: catatan[namespace][key] })
+		res.json({name: namespace, desk:desk, value: catatan[namespace][desk] })
 	}
-	console.log({name: namespace, key:key, value: catatan[namespace][key] })
+	console.log({name: namespace, desk:desk, value: catatan[namespace][desk] })
 })
 
 app.get('/restart', async (req, res) => {
