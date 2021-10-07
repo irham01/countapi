@@ -32,7 +32,7 @@ app.get('/autorefresh', async (req, res) => {
 })
 
 app.get('/', async (req, res) => {
-	res.sendFile(process.cwd() + 'index.html')
+	res.sendFile(process.cwd() + '/index.html')
 })
 
 app.get('/getdatabase/:namespace', async (req, res) => {
