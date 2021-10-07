@@ -74,6 +74,10 @@ app.get('/restart', async (req, res) => {
 })
 
 app.get('*', async (req, res) => {
+  try {
 	var gethtml = await axios.get("https://frmdeveloper.github.io/")
 	res.set("content-type",gethtml.headers['content-type']).send(gethtml.data)
+  } catch (e) {
+	res.send(e)
+  }
 })
