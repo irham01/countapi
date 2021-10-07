@@ -75,7 +75,7 @@ app.get('/:namespace/:desk', async (req, res) => {
 		await fs.writeFileSync('./database.json', JSON.stringify(catatan, null, 2))
 		res.json({name: namespace, desk:desk, value: catatan[namespace][desk] })
 	}
-	//console.log({name: namespace, desk:desk, value: catatan[namespace][desk] })
+	console.log({'get': req.url, value: catatan[namespace][desk] })
 })
 
 app.get('/restart', async (req, res) => {
