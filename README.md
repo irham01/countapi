@@ -25,7 +25,10 @@ ___
 
 ___
 # Donate
-<p align="center" width=100%><img src="https://svgur.com/i/Vtt.svg"></p>
+
+<p align="center" width=100%>
+   <img src="https://svgur.com/i/Vtt.svg">
+</p>
 
 ### Pulsa
 - axis:  083169480682
