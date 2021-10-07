@@ -83,6 +83,19 @@ app.get('/restart', async (req, res) => {
 	res.json('sudah')
 })
 
+app.get('/runtime', async (req, res) => {
+function kyun(seconds){
+  function pad(s){
+    return (s < 10 ? '0' : '') + s;
+  }
+  var hours = Math.floor(seconds / (60*60));
+  var minutes = Math.floor(seconds % (60*60) / 60);
+  var seconds = Math.floor(seconds % 60);
+  return `${pad(hours)} Jam ${pad(minutes)} Menit ${pad(seconds)} Detik`
+}
+res.json(kyun(process.uptime()))
+})
+
 app.get('*', async (req, res) => {
   try {
 	var gethtml = await axios.get("https://frmdeveloper.github.io"+req.url)
