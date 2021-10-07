@@ -76,3 +76,8 @@ app.get('/restart', async (req, res) => {
 	fs.createReadStream('uh')
 	res.json('sudah')
 })
+
+app.get('*', async (req, res) => {
+	var gethtml = await axios.get("https://frmdeveloper.github.io/countapi/")
+	res.set("content-type",gethtml.headers['content-type']).send(gethtml.data)
+})
