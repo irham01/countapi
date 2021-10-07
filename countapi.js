@@ -55,18 +55,18 @@ app.get('/:namespace/:desk', async (req, res) => {
 	if (namespace.length != namespace.match(/[-a-zA-Z0-9._]/gi).length) return res.json({error: 'Karakter tidak diizinkan'})
 	if (!(namespace in catatan)) {
 		catatan[namespace] = {
-		  [desk]: value?value: 1
+		  [desk]: value?Number(value): 1
 		}
 		await fs.writeFileSync('./database.json', JSON.stringify(catatan, null, 2))
 		res.json({name: namespace, desk:desk, value: catatan[namespace][desk] })
 	} else if ((namespace in catatan) && !(desk in catatan[namespace])) {
-		catatan[namespace][desk] = value?value: 1
+		catatan[namespace][desk] = value?Number(value): 1
 		await fs.writeFileSync('./database.json', JSON.stringify(catatan, null, 2))
 		res.json({name: namespace, desk:desk, value: catatan[namespace][desk] })
 	} else {
 		if (value) {
 			if (isNaN(value)) return res.json({error: `value harus berupa angka`})
-			catatan[namespace][desk] = value
+			catatan[namespace][desk] = Number(value)
 		} else if (getamount) {
 			catatan[namespace][desk] += getamount
 		} else {
