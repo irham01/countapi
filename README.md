@@ -22,3 +22,20 @@ ___
 - [http://countapi.frm.rf.gd/yoursite.com/visit?value=100](http://countapi.frm.rf.gd/yoursite.com/visit?value=100)<br>Jika Anda ingin mengubah total hitungan sesuai keinginan anda, anda dapat menggunakan query <b>value</b> kemudian di ikuti jumlah yang anda inginkan.
 
 - [http://countapi.frm.rf.gd/katasandi/apikey?amount=+1](http://countapi.frm.rf.gd/katasandi/apikey?amount=+1)<br>- Jika Anda ingin menambah atau mengurangi hitungan, anda dapat menggunakan ini.<br>Jika anda ingin menambah hitungan, gunakan <b>amount=+1</b><br>- Jika anda ingin mengurangi hitungan, gunakan <b>amount=-1</b><br><b>• Untuk angka 1 bisa diubah dengan angka sesuai keinginan anda</b>
+
+___
+# Donate
+<p align="center" width=100%><img src="https://svgur.com/i/Vtt.svg"></p>
+
+### Pulsa
+- axis:  083169480682
+- indosat:  081615901727
+
+### Uang digital
+- [Dana:](https://link.dana.id/qr/3jstu95e) 081615901727
+- [Paypal:](https://paypal.me/frmdeveloper) fauzanrifkim@gmail.com
+- Rek. CIMB Niaga: 8059081615901727
+
+
+
+
