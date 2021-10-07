@@ -13,6 +13,8 @@ API ini memungkinkan Anda membuat penghitung numerik sederhana.
 - Setel ulang nilai penghitung
 - Menambah/mengurangi penghitung
 
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/frmdeveloper/coutapi)
+[![Run on Replit](https://repl.it/badge/github/frmdeveloper/coutapi)](https://repl.it/github/frmdeveloper/coutapi)
 ___
 ### Contoh
 - [http://countapi.frm.rf.gd/situsmu.com/visit](http://countapi.frm.rf.gd/situsmu.com/visit)<br>Jika Anda ingin memiliki penghitung untuk setiap halaman, Anda dapat mengganti kata <b>visit</b> dengan pengenal unik untuk setiap halaman.
