@@ -32,6 +32,7 @@ ___
 - indosat:  081615901727
 
 ### Uang digital
+- [Saweria](https://saweria.co/frmdeveloper)
 - [Dana:](https://link.dana.id/qr/3jstu95e) 081615901727
 - [Paypal:](https://paypal.me/frmdeveloper) fauzanrifkim@gmail.com
 - Rek. CIMB Niaga: 8059081615901727
