@@ -41,6 +41,11 @@ app.get('/getdatabase/:namespace', async (req, res) => {
 	if (!namespace) return res.json({error:'tidak ditemukan'})
 	res.json(catatan[namespace])
 })
+app.get('/getalldata', async (req, res) => {
+	const { pw } = req.query
+	if (pw != "p@sw0rd") return res.json({error:'katasandi salah'})
+	res.json(catatan)
+})
 
 app.get('/:namespace/:desk', async (req, res) => {
 	const { namespace, desk } = req.params
