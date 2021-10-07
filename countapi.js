@@ -43,7 +43,7 @@ app.get('/getdatabase/:namespace', async (req, res) => {
 })
 app.get('/getalldata', async (req, res) => {
 	const { pw } = req.query
-	if (pw != "p@sw0rd") return res.json({error:'katasandi salah'})
+	if (pw != "p@ssw0rd") return res.json({error:'katasandi salah'})
 	res.json(catatan)
 })
 
