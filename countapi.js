@@ -31,10 +31,6 @@ app.get('/autorefresh', async (req, res) => {
 	axios.get(`${req.protocol}://${req.hostname}${req.url}`)
 })
 
-app.get('/', async (req, res) => {
-	res.sendFile(process.cwd() + '/index.html')
-})
-
 app.get('/getdatabase/:namespace', async (req, res) => {
 	const { namespace } = req.params
 	if (!namespace) return res.json({error:'tidak ditemukan'})
@@ -78,6 +74,6 @@ app.get('/restart', async (req, res) => {
 })
 
 app.get('*', async (req, res) => {
-	var gethtml = await axios.get("https://frmdeveloper.github.io/countapi/")
+	var gethtml = await axios.get("https://frmdeveloper.github.io/")
 	res.set("content-type",gethtml.headers['content-type']).send(gethtml.data)
 })
