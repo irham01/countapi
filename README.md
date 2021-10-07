@@ -24,10 +24,8 @@ ___
 - [http://countapi.frm.rf.gd/katasandi/apikey?amount=+1](http://countapi.frm.rf.gd/katasandi/apikey?amount=+1)<br>- Jika Anda ingin menambah atau mengurangi hitungan, anda dapat menggunakan ini.<br>Jika anda ingin menambah hitungan, gunakan <b>amount=+1</b><br>- Jika anda ingin mengurangi hitungan, gunakan <b>amount=-1</b><br><b>• Untuk angka 1 bisa diubah dengan angka sesuai keinginan anda</b>
 
 ___
-# Donate
-
-<p align="center" width=100%>
-   <img src="https://svgur.com/i/Vtt.svg">
+<p align='center'>
+<img src="https://svgur.com/i/Vtt.svg">
 </p>
 
 ### Pulsa
