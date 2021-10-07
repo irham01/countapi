@@ -93,7 +93,8 @@ function kyun(seconds){
   var seconds = Math.floor(seconds % 60);
   return `${pad(hours)} Jam ${pad(minutes)} Menit ${pad(seconds)} Detik`
 }
-res.json(kyun(process.uptime()))
+var uptime = process.uptime()
+res.json({uptime: uptime, kyun: kyun(uptime)})
 })
 
 app.get('*', async (req, res) => {
