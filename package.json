@@ -15,7 +15,7 @@
     "ssl-express-www": "latest"
   },
   "scripts": {
-    "start": "node server.js"
+    "start": "nodemon -x 'node server.js || touch server.js'"
   },
   "nodemonConfig": {
     "ext": "js,html,sh"
