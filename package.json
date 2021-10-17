@@ -2,7 +2,7 @@
   "name": "countapi",
   "version": "1.1.1-uh",
   "description": "git clone https://github.com/frmdeveloper/countapi",
-  "main": "server.js",
+  "main": "index.js",
   "directories": {
     "lib": "lib"
   },
@@ -15,7 +15,7 @@
     "ssl-express-www": "latest"
   },
   "scripts": {
-    "start": "nodemon -x 'node server.js || touch server.js'"
+    "start": "nodemon -x 'node index.js || touch index.js'"
   },
   "nodemonConfig": {
     "ext": "js,html,sh"
