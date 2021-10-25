@@ -1,4 +1,3 @@
-yoururl = 'https://countapi.frm.rf.gd'
 var express = require('express'),
     cors = require('cors'),
     secure = require('ssl-express-www');
@@ -7,6 +6,7 @@ var app = express()
 const fs = require('fs')
 const bodyParser = require('body-parser')
 const axios = require('axios')
+const { exec, execSync } = require("child_process")
 const sleep = async (ms) => {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
@@ -19,8 +19,6 @@ app.use(cors())
 app.use(express.static("public"))
 app.listen(PORT, async () => {
 	console.log(`Server berjalan dengan port: ${PORT}\n`)
-	await sleep(10000)
-	if (yoururl) { axios.get(yoururl+'/autorefresh') }
 })
 
 var catatan = JSON.parse(fs.readFileSync('./database.json'))
@@ -78,9 +76,9 @@ app.get('/:namespace/:desk', async (req, res) => {
 	console.log({ip: req.ip, ua: req.headers['user-agent'], 'get': req.url, value: catatan[namespace][desk] })
 })
 
-app.get('/restart', async (req, res) => {
-	fs.createReadStream('uh')
-	res.json('sudah')
+app.get('/update', async (req, res) => {
+	var gitclone = await execSync("git remote set-url origin https://github.com/frmdeveloper/countapi && git pull")
+	res.json({result: gitclone})
 })
 
 app.get('/runtime', async (req, res) => {
