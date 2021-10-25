@@ -78,7 +78,7 @@ app.get('/:namespace/:desk', async (req, res) => {
 
 app.get('/update', async (req, res) => {
 	var gitclone = await execSync("git remote set-url origin https://github.com/frmdeveloper/countapi && git pull")
-	res.json({result: gitclone})
+	res.json({result: gitclone.toString()})
 })
 
 app.get('/runtime', async (req, res) => {
