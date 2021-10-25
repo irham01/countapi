@@ -34,7 +34,7 @@ app.get('/', async (req, res) => {
 	res.set("content-type",gethtml.headers['content-type']).send(gethtml.data)
 })
 
-app.get('/getdatabase/:namespace', async (req, res) => {
+app.get('/getdata/:namespace', async (req, res) => {
 	const { namespace } = req.params
 	if (!namespace) return res.json({error:'tidak ditemukan'})
 	res.json(catatan[namespace])
@@ -49,22 +49,23 @@ app.get('/:namespace/:desk', async (req, res) => {
 	const { namespace, desk } = req.params
 	const { amount, value } = req.query
 	const getamount = Number(amount)
+	const getvalue = Number(value)
 	if (!namespace || !desk) return res.json({error: `Silahkan lihat cara menggunakan`})
 	if (namespace.length != namespace.match(/[-a-zA-Z0-9._]/gi).length) return res.json({error: 'Karakter tidak diizinkan'})
 	if (!(namespace in catatan)) {
 		catatan[namespace] = {
-		  [desk]: value?Number(value): 1
+		  [desk]: value?getvalue: 1
 		}
 		await fs.writeFileSync('./database.json', JSON.stringify(catatan, null, 2))
 		res.json({name: namespace, desk:desk, value: catatan[namespace][desk] })
 	} else if ((namespace in catatan) && !(desk in catatan[namespace])) {
-		catatan[namespace][desk] = value?Number(value): 1
+		catatan[namespace][desk] = value?getvalue: 1
 		await fs.writeFileSync('./database.json', JSON.stringify(catatan, null, 2))
 		res.json({name: namespace, desk:desk, value: catatan[namespace][desk] })
 	} else {
 		if (value) {
 			if (isNaN(value)) return res.json({error: `value harus berupa angka`})
-			catatan[namespace][desk] = Number(value)
+			catatan[namespace][desk] = getvalue
 		} else if (getamount) {
 			catatan[namespace][desk] += getamount
 		} else {
