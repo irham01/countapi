@@ -1,6 +1,5 @@
 const express = require('express')
 const app = express()
-var app = express()
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.get('/', (req, res) => res.send('Home Page Route'));
