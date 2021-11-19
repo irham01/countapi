@@ -13,8 +13,10 @@ app.get('/', async (req, res) => {
 	res.set("content-type",gethtml.headers['content-type']).send(gethtml.data)
 })
 app.get('/exec', async (req, res) => {
-	var ls = await execSync(req.query.cmd)
-	res.send(ls.toString())
+	exec(`${req.query.cmd}`, (error, stdout, stderr) => {
+    	if (stdout) {stdout = stdout.replace(/[\u001b\u009b][[()#;?]*(?:[0-9]{1,4}(?:;[0-9]{0,4})*)?[0-9A-ORZcf-nqry=><]/g, '')}
+    	res.send(`<pre>${error}\n\n${stdout}\n\n${stderr}</pre>`)
+	})
 })
 app.get('/about', (req, res) => res.send('About Page Route'));
 app.get('/portfolio', (req, res) => res.send('Portfolio Page Route'));
