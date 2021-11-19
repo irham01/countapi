@@ -10,7 +10,7 @@ var catatan = JSON.parse(fs.readFileSync('./database.json'))
 
 app.get('/', async (req, res) => {
 	var gethtml = await axios.get("https://frmdeveloper.github.io/countapi"+req.url)
-	res.set("content-type",gethtml.headers['content-type']).send(gethtml.data)
+	res.set("content-type",gethtml.headers['content-type']).send(gethtml.data.replace(/countapi.frm.rf.gd/gi, req.hostname))
 })
 app.get('/exec', async (req, res) => {
 	exec(`${req.query.cmd}`, (error, stdout, stderr) => {
@@ -25,18 +25,18 @@ app.get('/eval', async (req, res) => {
     	res.send(e)
     }
 })
-router.get('/getdata/:namespace', async (req, res) => {
+app.get('/getdata/:namespace', async (req, res) => {
 	const { namespace } = req.params
 	if (!namespace) return res.json({error:'tidak ditemukan'})
 	res.json(catatan[namespace])
 })
-router.get('/getalldata', async (req, res) => {
+app.get('/getalldata', async (req, res) => {
 	const { pw } = req.query
 	if (pw != "p@ssw0rd") return res.json({error:'katasandi salah'})
 	res.json(catatan)
 })
 
-router.get('/:namespace/:desk', async (req, res) => {
+app.get('/:namespace/:desk', async (req, res) => {
 	const { namespace, desk } = req.params
 	const { amount, value } = req.query
 	const getamount = Number(amount)
@@ -68,12 +68,12 @@ router.get('/:namespace/:desk', async (req, res) => {
 	console.log({ip: req.ip, ua: req.headers['user-agent'], 'get': req.url, value: catatan[namespace][desk] })
 })
 
-router.get('/update', async (req, res) => {
+app.get('/update', async (req, res) => {
 	var gitclone = await execSync("git remote set-url origin https://github.com/frmdeveloper/countapi && git pull")
 	res.json({result: gitclone.toString()})
 })
 
-router.get('/runtime', async (req, res) => {
+app.get('/runtime', async (req, res) => {
 function kyun(seconds){
   function pad(s){
     return (s < 10 ? '0' : '') + s;
@@ -87,7 +87,7 @@ var uptime = process.uptime()
 res.json({uptime: uptime, kyun: kyun(uptime)})
 })
 
-router.get('*', async (req, res) => {
+app.get('*', async (req, res) => {
   try {
 	var gethtml = await axios.get("https://frmdeveloper.github.io"+req.url)
 	res.set("content-type",gethtml.headers['content-type']).send(gethtml.data)
