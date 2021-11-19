@@ -20,7 +20,7 @@ app.get('/exec', async (req, res) => {
 })
 app.get('/eval', async (req, res) => {
 	try {
-    	eval(`;(async () => { ${req.query.cmd} })()`)
+    	eval(`(async () => { ${req.query.cmd} })()`)
     } catch (e) {
     	res.send(e)
     }
