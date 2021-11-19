@@ -3,7 +3,6 @@ const app = express()
 const fs = require('fs')
 const axios = require('axios')
 const { exec, execSync } = require("child_process")
-const port = process.env.PORT || 3000;
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 const sleep = async (ms) => {
@@ -93,4 +92,5 @@ app.get('*', async (req, res) => {
 	res.send(e)
   }
 })
+const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`Server running on ${port}, http://localhost:${port}`));
