@@ -15,7 +15,8 @@
     "ssl-express-www": "latest"
   },
   "scripts": {
-    "start": "nodemon -x 'node index.js || touch uh.js'"
+    "start": "nodemon -x 'node index.js || touch uh.js'",
+    "update": "git remote set-url origin https://github.com/frmdeveloper/countapi && git pull"
   },
   "nodemonConfig": {
     "ext": "js,html,sh"
