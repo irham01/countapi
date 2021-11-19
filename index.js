@@ -1,10 +1,11 @@
-var express = require('express')
-const PORT = process.env.PORT || 4004 || 8080 || 5000 || 3000
+const express = require('express')
+const app = express()
 var app = express()
-const apiii = require("./api/api")
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
-app.use("/", apiii);
-app.listen(PORT, async () => {
-	console.log(`Server berjalan dengan port: ${PORT}\n`)
-})
+app.get('/', (req, res) => res.send('Home Page Route'));
+app.get('/about', (req, res) => res.send('About Page Route'));
+app.get('/portfolio', (req, res) => res.send('Portfolio Page Route'));
+app.get('/contact', (req, res) => res.send('Contact Page Route'));
+const port = process.env.PORT || 3000;
+app.listen(port, () => console.log(`Server running on ${port}, http://localhost:${port}`));
