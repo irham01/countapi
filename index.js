@@ -3,7 +3,6 @@ const app = express()
 const fs = require('fs')
 const axios = require('axios')
 const { exec, execSync } = require("child_process")
-const port = process.env.PORT || 3000;
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 const sleep = async (ms) => { return new Promise(resolve => setTimeout(resolve, ms)); }
