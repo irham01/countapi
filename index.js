@@ -1,7 +1,9 @@
 const express = require('express')
 const app = express()
+const axios = require('axios')
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
+
 app.get('/', async (req, res) => {
 	var gethtml = await axios.get("https://frmdeveloper.github.io/countapi"+req.url)
 	res.set("content-type",gethtml.headers['content-type']).send(gethtml.data)
