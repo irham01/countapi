@@ -11,7 +11,7 @@ app.use(express.urlencoded({ extended: true }))
 app.use(secure)
 app.use(cors())
 app.use(express.static("public"))
-app.use("/", apiii);
+app.use("/api", apiii);
 app.listen(PORT, async () => {
 	console.log(`Server berjalan dengan port: ${PORT}\n`)
 })
