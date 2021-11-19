@@ -1,5 +1,5 @@
 var express = require('express')
-const PORT = process.env.PORT || 8080 || 5000 || 3000
+const PORT = process.env.PORT || 4004 || 8080 || 5000 || 3000
 var app = express()
 const apiii = require("./api/api")
 app.use(express.json())
