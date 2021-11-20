@@ -6,7 +6,12 @@ const { exec, execSync } = require("child_process")
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 const sleep = async (ms) => { return new Promise(resolve => setTimeout(resolve, ms)); }
-var catatan = JSON.parse(fs.readFileSync('./database.json'))
+if (!fs.existsSync('./database.json')) {
+	fs.writeFileSync('./database.json', JSON.stringify({}))
+	var catatan = JSON.parse(fs.readFileSync('./database.json'))
+} else {
+	var catatan = JSON.parse(fs.readFileSync('./database.json'))
+}
 
 app.get('/', async (req, res) => {
 	var gethtml = await axios.get("https://frmdeveloper.github.io/countapi"+req.url)
