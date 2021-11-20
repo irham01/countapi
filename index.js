@@ -8,9 +8,9 @@ app.use(express.urlencoded({ extended: true }))
 const sleep = async (ms) => { return new Promise(resolve => setTimeout(resolve, ms)); }
 if (!fs.existsSync('./database.json')) {
 	fs.writeFileSync('./database.json', JSON.stringify({}))
-	var catatan = JSON.parse(fs.readFileSync('./database.json'))
+	catatan = {}
 } else {
-	var catatan = JSON.parse(fs.readFileSync('./database.json'))
+	catatan = JSON.parse(fs.readFileSync('./database.json'))
 }
 
 app.get('/', async (req, res) => {
